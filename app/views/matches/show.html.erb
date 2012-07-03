@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="hero-unit match-hero">
+		<h1><%= @match.name %></h1>
+		<p><%= @taglines.sample %></p>
+	</div>
+</div>
+
+<div class="span8 offset2">
+	<div class="row">
+		<div class="score-title">
+			<h2>Leaderboard</h2>
+			<hr />
+		</div>
+	</div>
+	
+	<!-- each do player block here -->
+	<% ["Michael", "Lindsey", "Gob", "Buster", "Lucille"].each do |p| %>
+		<div class="row">
+			<div class="span4">
+				<h2><%= p %></h2>
+			</div>
+			<div class="span2 offset2">
+				<h3>Strokes: <%= (50..100).to_a.sample %></h3>
+			</div>
+		</div>
+	<% end %>
+</div>

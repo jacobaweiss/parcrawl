@@ -8,10 +8,17 @@ describe "new match" do
 end
 
 describe "when creating a match" do
-  it "should redirect to the match page" do
+  before do
     visit root_path
     fill_in 'Name', :with => "Bar Excellence"
     click_button 'Tee Off'
+  end
+  
+  it "should redirect to the match page" do
     page.should have_content('Bar Excellence')
+  end
+  
+  it "should show the custom match url" do
+    page.should have_content("#{root_url}/bar_excellence")
   end
 end

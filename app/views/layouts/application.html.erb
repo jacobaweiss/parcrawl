@@ -8,8 +8,13 @@
 </head>
 <body>
 	<%= render :partial => "layouts/navbar" %>
-	
 	<div class="container body">
+		<% flash.each do |key, value| %>
+	  	<div class="alert alert-<%= key %>">
+				<%= value %>
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+			</div>
+	  <% end %>
 		<%= yield %>
 	</div>
 

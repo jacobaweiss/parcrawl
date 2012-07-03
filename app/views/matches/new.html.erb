@@ -4,19 +4,25 @@
 	</div>
 </div>
 
+<p>
+	<div class="row">
+		<div class="span8 offset2">
+			<% if @match.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+		      <ul>
+		      <% @match.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		</div>
+	</div>
+</p>
+
 <p><div class="row">
-	<% if @match.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
-
-      <ul>
-      <% @match.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 	<div class="new-match well span4 offset4">
 		<%= form_for @match do |f| %>
 	

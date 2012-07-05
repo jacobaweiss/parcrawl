@@ -20,6 +20,7 @@ class MatchesController < ApplicationController
     else
       @match = Match.find(params[:id])
     end
+    @player = Player.new
     @taglines = ["When you win, your wallet loses.", "Argyle? Check. Advil? Check."]
   end
 end

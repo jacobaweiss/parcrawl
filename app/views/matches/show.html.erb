@@ -13,15 +13,19 @@
 		</div>
 	</div>
 	
-	<!-- each do player block here -->
-	<% ["Michael", "Lindsey", "Gob", "Buster", "Lucille"].each do |p| %>
+	<% @match.players.each do |p| %>
 		<div class="row">
 			<div class="span4">
-				<h2><%= p %></h2>
+				<h2><%= p.username %></h2>
 			</div>
 			<div class="span2 offset2">
 				<h3>Strokes: <%= (50..100).to_a.sample %></h3>
 			</div>
 		</div>
 	<% end %>
+	<div class="row">
+		<div class="well span3 offset2 new-player-form">
+			<%= render "players/form" %>
+		</div>
+	</div>
 </div>

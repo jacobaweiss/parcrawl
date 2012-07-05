@@ -28,6 +28,11 @@
 				<%= f.label :name, 'Bar Name' %>
 				<%= f.text_field :name %>
 			</div>
+			
+			<div class="field">
+				<%= f.label :hole_number, 'Hole Number' %>
+				<%= f.select(:hole_number, options_for_select( (1...10).to_a )) %>
+			</div>
 	
 			<div class="action">
 				<%= f.submit 'Add Hole', :class => 'btn btn-primary' %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705140049) do
+ActiveRecord::Schema.define(:version => 20120705171410) do
 
   create_table "match_players", :force => true do |t|
     t.integer  "player_id"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(:version => 20120705140049) do
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "url"
+    t.string   "slug"
   end
+
+  add_index "matches", ["slug"], :name => "index_matches_on_slug"
 
   create_table "players", :force => true do |t|
     t.string   "username",   :null => false

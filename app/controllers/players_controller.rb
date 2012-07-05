@@ -14,11 +14,7 @@ class PlayersController < ApplicationController
   private
   
   def load_match
-    if params[:name]
-      @match = Match.find_by_url("#{root_url}#{params[:match_name]}")
-    else
-      @match = Match.find(params[:match_id])
-    end
+    @match = Match.find(params[:match_id])
   end
   
 end

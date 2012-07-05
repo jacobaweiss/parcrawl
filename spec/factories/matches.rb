@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :match do
     name "BGA National"
+    slug "bga-national"
   end
 end

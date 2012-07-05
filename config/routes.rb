@@ -4,5 +4,4 @@ Parcrawl::Application.routes.draw do
   end
   
   root            :to => 'matches#new'
-  match '/:name', :to => 'matches#show'
 end

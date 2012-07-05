@@ -4,6 +4,7 @@ gem 'rails',          '3.2.6'
 gem "pg",             '~> 0.14.0'
 gem 'bootstrap-sass', '~> 2.0.3.1'
 gem 'jquery-rails'
+gem 'friendly_id',    '~> 4.0.7'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

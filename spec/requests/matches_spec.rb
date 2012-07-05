@@ -22,9 +22,4 @@ describe "when creating a match" do
   it "should redirect to the match page" do
     page.should have_content('Bar Excellence')
   end
-  
-  it "should generate a valid match url" do
-    visit "#{root_url}Bar_Excellence"
-    page.should have_content('Bar Excellence')
-  end
 end

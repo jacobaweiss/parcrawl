@@ -3,5 +3,5 @@ Parcrawl::Application.routes.draw do
     resources :players
   end
   
-  root            :to => 'matches#new'
+  root :to => 'matches#new'
 end

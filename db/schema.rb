@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705171410) do
+ActiveRecord::Schema.define(:version => 20120705175016) do
+
+  create_table "holes", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "match_players", :force => true do |t|
     t.integer  "player_id"

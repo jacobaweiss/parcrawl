@@ -18,7 +18,8 @@ describe "when creating a match" do
     page.should have_content('Bar Excellence')
   end
   
-  it "should show the custom match url" do
-    page.should have_content("#{root_url}/bar_excellence")
+  it "should generate a valid match url" do
+    visit "#{root_url}Bar_Excellence"
+    page.should have_content('Bar Excellence')
   end
 end

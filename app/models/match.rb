@@ -9,6 +9,5 @@ class Match < ActiveRecord::Base
   has_many :players,  :through => :match_players
   
   validates :name,  :presence => true,
-                    :uniqueness => true,
-                    :format => { :with => /^([a-zA-Z0-9]+[\s]?)*[a-zA-Z0-9]+$/, :message => "can only contain letters, numbers, and spaces." }
+                    :uniqueness => true
 end

@@ -4,10 +4,11 @@ class PlayersController < ApplicationController
   def create
     @player = @match.players.build(params[:player])
     if @match.save
-      redirect_to @match
       flash[:success] = "You have joined the match!"
+      redirect_to @match
     else
-      redirect_to @match, :error => "We were unable to add you to the match at this time."
+      flash[:error] = "We were unable to add you to the match at this time."
+      redirect_to @match
     end
   end
   

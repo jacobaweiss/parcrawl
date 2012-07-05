@@ -7,10 +7,11 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(params[:match])
     if @match.save
-      redirect_to match_path(@match)
       flash[:success] = "Your custom match url is #{root_url}#{"matches/"+@match.slug}"
+      redirect_to match_path(@match)
     else
-      render "new", :error => "Your match could not be created at this time."
+      flash[:error] = "Your match could not be created at this time."
+      redirect_to root_url
     end
   end
   

@@ -2,6 +2,9 @@
 
 FactoryGirl.define do
   factory :hole do
-    name "The Green Leafe"
+    sequence :name do  |n| 
+      "The Green Leafe #{n}"
+    end
+    match { Factory(:match) }
   end
 end

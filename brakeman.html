@@ -145,7 +145,7 @@ p {
   <tr>
     <td>/Users/viget/Documents/parcrawl</td>
     <td>3.2.6</td>
-    <td>2012-07-05 09:27:16 -0400</td>
+    <td>2012-07-05 17:48:13 -0400</td>
     <td>BasicAuth, CrossSiteScripting, DefaultRoutes, EscapeFunction, Evaluation, Execute, FileAccess, FilterSkipping, ForgerySetting, LinkTo, LinkToHref, MailTo, MassAssignment, ModelAttributes, NestedAttributes, QuoteTableName, Redirect, Render, ResponseSplitting, SQL, SafeBufferManipulation, SelectVulnerability, Send, SendFile, SessionSettings, SkipBeforeFilter, StripTags, TranslateBug, ValidationRegex, WithoutProtection</td>
   </tr>
 </table>
@@ -158,15 +158,15 @@ p {
   </tr>
   <tr>
     <td>Controllers</td>
-    <td>2</td>
+    <td>4</td>
   </tr>
   <tr>
     <td>Models</td>
-    <td>1</td>
+    <td>4</td>
   </tr>
   <tr>
     <td>Templates</td>
-    <td>4</td>
+    <td>7</td>
   </tr>
   <tr>
     <td>Errors</td>
@@ -174,7 +174,7 @@ p {
   </tr>
   <tr>
     <td>Security Warnings</td>
-    <td>0 <span class='high-confidence'>(0)</span></td>
+    <td>1 <span class='high-confidence'>(0)</span></td>
   </tr>
 </table>
 <br>
@@ -182,6 +182,11 @@ p {
   <tr>
     <th>Warning Type</th>
     <th>Total</th>
+  </tr>
+  
+  <tr>
+    <td>Cross Site Scripting</td>
+    <td>1</td>
   </tr>
   
 </table>
@@ -194,6 +199,102 @@ p {
   </tr>
   <tr>
     <td>[NONE]</td>
+  </tr>
+
+</table><p>View Warnings</p>
+<table>
+  <tr>
+    <th>Confidence</th>
+    <th>Template</th>
+    <th>Warning Type</th>
+    <th>Message</th>
+  </tr>
+
+  <tr>
+    <td><span class='med-confidence'>Medium</span></td>
+    <td>matches/show (MatchesController#show)</td>
+    <td>Cross Site Scripting</td>
+    <td><div class='warning_message' onClick="toggle('context1');toggle('message1');toggle('full_message1')" ><span id='message1' style='display:block' >Unsafe model attribute in link_to href near line 19: link_to((Unresolved Model).new.name, [Match.find...</span><span id='full_message1' style='display:none'>Unsafe model attribute in link_to href near line 19: link_to((Unresolved Model).new.name, [<span class="user_input">Match.find(params[:id])</span>, (Unresolved Model).new], :only_path =&gt; (true))</span><table id='context1' class='context' style='display:none'><caption>/app/views/matches/show.html.erb</caption>        <tr class='context first'>
+          <td class='context_line'>
+            <pre class='context'>14</pre>
+          </td>
+          <td class='context'>
+            <pre class='context'>	&lt;/div&gt;</pre>
+          </td>
+        </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>16</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>	&lt;% @match.holes.each do |h| %&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>17</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>		&lt;div class=&quot;row&quot;&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>18</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>			&lt;div class=&quot;span4&quot;&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context error'>
+            <td class='context_line'>
+              <pre class='context'>19</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>				&lt;h2&gt;&lt;%= link_to h.name, [@match, h], :only_path =&gt; true %&gt;&lt;/h2&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context alt near_error'>
+            <td class='context_line'>
+              <pre class='context'>20</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>			&lt;/div&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>21</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>			&lt;div class=&quot;span2 offset2&quot;&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>22</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>				&lt;h3&gt;Par &lt;%= (1..6).to_a.sample %&gt;: &lt;%= [&quot;Pint o' Beer&quot;, &quot;Long Island Iced Tea&quot;, &quot;Shot of Tequila&quot;, &quot;Rum &amp; Coke&quot;, &quot;Sake Bomb&quot;, &quot;Frozen Margarita&quot;].sample %&gt;&lt;/h3&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context'>
+            <td class='context_line'>
+              <pre class='context'>23</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>			&lt;/div&gt;</pre>
+            </td>
+          </tr>
+          <tr class='context alt'>
+            <td class='context_line'>
+              <pre class='context'>24</pre>
+            </td>
+            <td class='context'>
+              <pre class='context'>		&lt;/div&gt;</pre>
+            </td>
+          </tr>
+</table></div></td>
   </tr>
 
 </table></body></html>

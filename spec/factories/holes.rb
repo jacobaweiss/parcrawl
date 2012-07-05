@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :hole do
+    name "The Green Leafe"
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705175016) do
+ActiveRecord::Schema.define(:version => 20120705180857) do
 
   create_table "holes", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20120705175016) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "holes", ["slug"], :name => "index_holes_on_slug"
 
   create_table "match_players", :force => true do |t|
     t.integer  "player_id"

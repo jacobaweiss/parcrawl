@@ -11,13 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703201529) do
+ActiveRecord::Schema.define(:version => 20120705132754) do
 
   create_table "matches", :force => true do |t|
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "url"
+  end
+
+  create_table "players", :force => true do |t|
+    t.string   "username",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

@@ -1,9 +1,14 @@
 require_relative '../spec_helper'
 
 describe "new match" do
+  let!(:match) { Factory(:match) }
+  before { visit root_path }
   it "should have a new game form" do
-    visit root_path
     page.should have_content('Match Name')
+  end
+  
+  it "should list most recent matches" do
+    page.should have_content('BGA National')
   end
 end
 

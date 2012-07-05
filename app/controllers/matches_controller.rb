@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
   def new
     @match = Match.new
+    @matches = Match.order("created_at DESC")
   end
   
   def create

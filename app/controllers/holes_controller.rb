@@ -1,5 +1,5 @@
 class HolesController < ApplicationController
-  before_filter :load_match
+  before_filter :load_match, :only => [:new, :create]
   
   def new
     @hole = Hole.new
@@ -18,6 +18,7 @@ class HolesController < ApplicationController
   
   def show
     @hole = Hole.find(params[:id])
+    @score = Score.new
   end
   
   private

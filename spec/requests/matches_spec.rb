@@ -28,7 +28,7 @@ describe "Matches" do
   
   describe "Viewing a match show page" do
     it "links to holes" do
-      hole = Factory(:hole, :match => match, :name => 'Grady Pub')
+      hole = Factory(:hole, :match => match, :hole_number => 2, :name => 'Grady Pub')
 
       visit "/matches/#{match.slug}"
 

@@ -8,6 +8,9 @@ FactoryGirl.define do
       n
     end
     
+    drink "Pint o' Beer"
+    par 4
+    
     match { Factory(:match) }
   end
 end

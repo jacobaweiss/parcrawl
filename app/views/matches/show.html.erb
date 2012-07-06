@@ -19,7 +19,7 @@
 				<h2><%= h.hole_number %>. <%= link_to h.name, [@match, h] %></h2>
 			</div>
 			<div class="span2 offset2">
-				<h3>Par <%= (1..6).to_a.sample %>: <%= ["Pint o' Beer", "Long Island Iced Tea", "Shot of Tequila", "Rum & Coke", "Sake Bomb", "Frozen Margarita"].sample %></h3>
+				<h3>Par <%= h.par %>: <%= h.drink %></h3>
 			</div>
 		</div>
 	<% end %>

@@ -1,10 +1,13 @@
 class Hole < ActiveRecord::Base
   extend FriendlyId
 
-  attr_accessible :name, :hole_number
+  attr_accessible :name, :hole_number, :drink, :par
   
   belongs_to :match
-  validates :slug, :presence => true
+  validates :slug,  :presence => true
+  validates :par,   :presence => true,
+                    :format => { :with => /^[1-8]$/}
+  validates :drink, :presence => true
   validates :hole_number, :presence => true,
                           :uniqueness => { :scope => :match_id },
                           :format => { :with => /^[1-9]$/}

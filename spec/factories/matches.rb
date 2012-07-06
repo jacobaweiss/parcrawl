@@ -1,8 +1,10 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :match do
-    name "BGA National"
-    slug "bga-national"
+    sequence :name do |n|
+      "BGA National #{n}"
+    end
+    sequence :slug do |n|
+      "bga-national-#{n}"
+    end
   end
 end

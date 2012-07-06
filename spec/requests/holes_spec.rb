@@ -8,6 +8,9 @@ describe "Holes Views" do
       visit match_path(match)
       click_link('Add a hole')
       fill_in 'Bar Name', :with => "Duffeys"
+      select '1', :from => 'Hole Number'
+      fill_in 'Name of Drink', :with => "Shot of Vodka"
+      select '1', :from => 'Par'
       click_button('Add Hole')
       visit match_path(match)
       page.should have_content('Duffeys')

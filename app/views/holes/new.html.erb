@@ -33,6 +33,16 @@
 				<%= f.label :hole_number, 'Hole Number' %>
 				<%= f.select(:hole_number, options_for_select( (1...10).to_a )) %>
 			</div>
+			
+			<div class="field">
+				<%= f.label :drink, 'Name of Drink' %>
+				<%= f.text_field :drink %>
+			</div>
+			
+			<div class="field">
+				<%= f.label :par, 'Par' %>
+				<%= f.select(:par, options_for_select( (1...9).to_a )) %>
+			</div>
 	
 			<div class="action">
 				<%= f.submit 'Add Hole', :class => 'btn btn-primary' %>

@@ -4,6 +4,7 @@ class Hole < ActiveRecord::Base
   attr_accessible :name, :hole_number, :drink, :par
   
   belongs_to :match
+  has_many  :scores
   validates :slug,  :presence => true
   validates :par,   :presence => true,
                     :format => { :with => /^[1-8]$/}

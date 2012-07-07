@@ -7,5 +7,7 @@ class Score < ActiveRecord::Base
   validates :score, :presence => true,
                     :numericality => true
                     
-  validates :player_id, :uniqueness => { :scope => :hole_id, :message => "player can't shoot on the same hole twice" }
+  validates :player_id,
+            :uniqueness => { :scope => :hole_id, :message => "player can't shoot on the same hole twice" },
+            :presence => true
 end

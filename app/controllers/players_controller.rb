@@ -12,6 +12,11 @@ class PlayersController < ApplicationController
     end
   end
   
+  def show
+    @player = Player.find(params[:id])
+    @penalties = @player.penalties.order("created_at DESC")
+  end
+  
   private
   
   def load_match

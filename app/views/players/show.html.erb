@@ -1,0 +1,21 @@
+<div class="span8 offset2">
+	<div class="row">
+		<div class="hero-unit">
+			<h1><%= @player.username %></h1>
+			<p>Strokes: <%= @player.total_match_score %></p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<h2 id="player-penalties-title">Penalties</h2>
+		<hr />
+		<% if @penalties.any? %>
+			<% @penalties.each do |p| %>
+				<h3><%= "-#{p.strokes} Strokes" %></h3><br />
+				<p><%= p.offense %></p>
+			<% end %>
+		<% else %>
+			<h3 id="nun-worthy">This player's chaste as a nun.</h3>
+		<% end %>
+	</div>
+</div>

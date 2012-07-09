@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706140019) do
+ActiveRecord::Schema.define(:version => 20120709151651) do
 
   create_table "holes", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(:version => 20120706140019) do
   end
 
   add_index "matches", ["slug"], :name => "index_matches_on_slug"
+
+  create_table "penalties", :force => true do |t|
+    t.integer  "player_id",  :null => false
+    t.string   "offense",    :null => false
+    t.integer  "strokes",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "players", :force => true do |t|
     t.string   "username",   :null => false

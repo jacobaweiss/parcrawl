@@ -41,7 +41,18 @@
 				<h2><%= "#{i+1}. #{p.username}" %></h2>
 			</div>
 			<div class="span2 offset2">
-				<h3>Strokes: <%= p.total_match_score - @match.total_match_score %></h3>
+				<h3>
+					Strokes: 
+					<% if p.total_match_score - @match.total_match_score < 0 %>
+						<score class="under-par">
+							<%= p.total_match_score - @match.total_match_score %>
+						</score>
+					<% else %>
+						<score class="over-par">
+							<%= p.total_match_score - @match.total_match_score %>
+						</score>
+					<% end %>
+					</h3>
 			</div>
 		</div>
 	<% end %>

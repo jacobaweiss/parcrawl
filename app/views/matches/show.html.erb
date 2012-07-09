@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="hero-unit match-hero">
+	<div class="span8 offset2 hero-unit match-hero">
 		<h1><%= @match.name %></h1>
 		<p><%= @taglines.sample %></p>
 	</div>
@@ -35,14 +35,13 @@
 		</div>
 	</div>
 	
-	<% @match.players.each do |p| %>
+	<% @players.each_with_index do |p, i| %>
 		<div class="row">
 			<div class="span4">
-				<h2><%= p.username %></h2>
+				<h2><%= "#{i+1}. #{p.username}" %></h2>
 			</div>
 			<div class="span2 offset2">
-				<!-- Replace with real scores -->
-				<h3>Strokes: <%= (50..100).to_a.sample %></h3>
+				<h3>Strokes: <%= p.total_match_score %></h3>
 			</div>
 		</div>
 	<% end %>

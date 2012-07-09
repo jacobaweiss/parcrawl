@@ -8,4 +8,7 @@ class Player < ActiveRecord::Base
   validates :username,  :presence => true,
                         :uniqueness => true
   
+  def total_match_score
+    scores.map{ |s| s.score }.reduce(0, &:+)
+  end
 end

@@ -34,5 +34,15 @@ describe "Matches" do
 
       page.should have_link('Grady Pub', :href => "/matches/#{match.slug}/holes/#{hole.slug}")
     end
+    
+    context "when the requested match does not exist" do
+      it "should return a 404 error" do
+        
+        #this test works in cli, not in-textmate-rspec ?
+        visit "/matches/cornballer"
+
+        page.should have_content("What's the officer, problem?")
+      end
+    end
   end
 end

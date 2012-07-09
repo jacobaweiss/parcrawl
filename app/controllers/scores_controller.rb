@@ -5,10 +5,10 @@ class ScoresController < ApplicationController
     @score = @hole.scores.build(params[:score])
     if @score.save
       flash[:success] = "Keep swinging, your score has been saved!"
-      redirect_to @score.hole
+      redirect_to @score.hole, :only_path => true
     else
       flash[:error] = "Your score couldn't be saved; either try again, or stop drinking and go home you drunkard."
-      redirect_to @score.hole
+      redirect_to @score.hole, :only_path => true
     end
   end
   

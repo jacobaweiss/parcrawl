@@ -19,6 +19,7 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
     @player = Player.new
     @players = @match.players.sort_by{ |player| player.total_match_score }
+    @penalties = @players.map{|p| p.penalties}.reduce(&:+).sort_by{ |p| p.created_at }.reverse
     @taglines = ["When you win, your wallet loses.", "Argyle? Check. Advil? Check."]
   end
 end

@@ -10,6 +10,6 @@ class Player < ActiveRecord::Base
                         :uniqueness => true
   
   def total_match_score
-    scores.map{ |s| s.score }.reduce(0, &:+)
+    scores.map{ |s| s.score }.reduce(0, &:+) + penalties.map{ |p| p.strokes }.reduce(0, &:+)
   end
 end

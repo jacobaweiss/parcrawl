@@ -1,6 +1,6 @@
 Parcrawl::Application.routes.draw do
   resources :matches do
-    resources :players, :holes
+    resources :players, :holes, :penalties
   end
   
   resources :holes do

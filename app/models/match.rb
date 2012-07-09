@@ -12,6 +12,6 @@ class Match < ActiveRecord::Base
                     :uniqueness => true
                     
   def total_match_score
-    holes.map { |h| h.par }.reduce(&:+)
+    holes.map { |h| h.par }.reduce(0, &:+)
   end
 end

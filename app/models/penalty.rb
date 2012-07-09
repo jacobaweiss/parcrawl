@@ -1,4 +1,6 @@
 class Penalty < ActiveRecord::Base
+  attr_accessible :player_id, :offense, :strokes
+  
   belongs_to :player
   
   validates :offense, :presence => true

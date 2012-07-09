@@ -1,0 +1,22 @@
+<%= form_for [@match, @penalty] do |f| %>
+		
+		<div class="field">
+			<%= f.label :player_id, 'Player' %>
+			<%= f.select(:player_id, options_for_select( @match.players.map {|n| [n.username,n.id]} )) %>
+		</div>
+
+		<div class="field">
+			<%= f.label :offense %>
+			<%= f.text_area :offense, :size => '24x4' %>
+		</div>
+		
+		<div class="field">
+			<%= f.label :strokes, 'Strokes' %>
+			<%= f.text_field :strokes, :size => 2 %>
+		</div>
+		
+		<div class="action">
+			<%= f.submit 'Add Penalty', :class => 'btn btn-primary' %>
+		</div>
+
+<% end %>

@@ -43,15 +43,19 @@
 			<div class="span2 offset2">
 				<h3>
 					Strokes: 
-					<% if p.total_match_score - @match.total_match_score < 0 %>
+					<% score = p.total_match_score - @match.total_match_score %>
+					<% if score < 0 %>
 						<score class="under-par">
-							<%= p.total_match_score - @match.total_match_score %>
+							<%= score %>
+						</score>
+					<% elsif score > 0 %>
+						<score class="over-par">
+							<%= score %>
 						</score>
 					<% else %>
-						<score class="over-par">
-							<%= p.total_match_score - @match.total_match_score %>
-						</score>
+						<%= score %>
 					<% end %>
+					
 					</h3>
 			</div>
 		</div>

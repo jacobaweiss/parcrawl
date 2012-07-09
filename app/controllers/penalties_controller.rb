@@ -1,5 +1,5 @@
 class PenaltiesController < ApplicationController
-  before_filter :load_match, :only => [:new]
+  before_filter :load_match, :only => [:new, :create]
   
   def new
     @penalty = Penalty.new
@@ -12,7 +12,7 @@ class PenaltiesController < ApplicationController
       redirect_to match_player_path(@penalty.player.matches.first, @penalty.player)
     else
       flash[:error] = "Something went wrong; please try again."
-      redirect_to @penalty.player
+      redirect_to @match
     end
   end
   

@@ -25,11 +25,7 @@
 				<div class="span2 offset2">
 					<h3>
 						Strokes: 
-						<% if p.scores.where(:hole_id => @hole.id).exists? %>
-							<%=  p.scores.where(:hole_id => @hole.id).first.score %>
-						<% else %>
-							N/A
-						<% end %>
+						<%=  p.hole_score(@hole) %>
 					</h3>
 				</div>
 			</div>

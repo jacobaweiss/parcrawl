@@ -11,7 +11,14 @@ class Match < ActiveRecord::Base
   validates :name,  :presence => true,
                     :uniqueness => true
                     
-  def total_match_score
-    holes.map { |h| h.par }.reduce(0, &:+)
+  def match_par
+    holes.sum(:par)
   end
+  
+  def penalties
+    if players.any?
+      players.map{|p| p.penalties}.reduce(&:+).sort_by{ |p| p.created_at }.reverse
+    end
+  end
+  
 end

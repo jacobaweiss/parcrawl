@@ -14,29 +14,22 @@
 			</div>
 		</div>
 	
-		<% @players.each_with_index do |p, i| %>
-			<div class="row">
-				<div class="span4">
-					<h2><%= "#{i+1}. " %><%= link_to p.username, match_player_path(@match, p) %></h2>
-				</div>
-				<div class="span2 offset2">
-					<h3>
-						Strokes: 
-						<% score = p.total_match_score - @match.total_match_score %>
-						<% if score < 0 %>
-							<score class="under-par">
-								<%= score %>
+		<% if @players %>
+			<% @players.each_with_index do |p, i| %>
+				<div class="row">
+					<div class="span4">
+						<h3><%= "#{i+1}. " %><%= link_to p.username, match_player_path(@match, p) %></h3>
+					</div>
+					<div class="span2 offset2">
+						<h3>
+							Strokes: 
+							<score class="<%= p.over_or_under_par?(@match) %>">
+								<%= p.match_score_relative_to_par(@match) %>
 							</score>
-						<% elsif score > 0 %>
-							<score class="over-par">
-								<%= score %>
-							</score>
-						<% else %>
-							<%= score %>
-						<% end %>
 						</h3>
+					</div>
 				</div>
-			</div>
+			<% end %>
 		<% end %>
 		<div class="row">
 			<div class="well span3 offset2 new-player-form">
@@ -56,7 +49,7 @@
 		<% @match.holes.order("hole_number ASC").each do |h| %>
 			<div class="row">
 				<div class="span4">
-					<h2><%= h.hole_number %>. <%= link_to h.name, [@match, h] %></h2>
+					<h3><%= h.hole_number %>. <%= link_to h.name, [@match, h] %></h2>
 				</div>
 				<div class="span2 offset2">
 					<h3>Par <%= h.par %>: <%= h.drink %></h3>
@@ -75,11 +68,13 @@
 			</div>
 		</div>
 		<%= link_to 'Add a Penalty', new_match_penalty_path(@match) %>
-		<% @penalties.each do |p| %>
-			<div class="row">
-				<h3><%= "-#{p.strokes} Strokes for #{p.player.username}" %></h3><br />
-				<p><%= p.offense %></p>
-			</div>
+		<% if @match.penalties %>
+			<% @match.penalties.each do |p| %>
+				<div class="row">
+					<h3><%= "-#{p.strokes} Strokes for #{p.player.username}" %></h3><br />
+					<p><%= p.offense %></p>
+				</div>
+			<% end %>
 		<% end %>
 	</p>
 </div>

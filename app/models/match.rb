@@ -10,4 +10,8 @@ class Match < ActiveRecord::Base
   
   validates :name,  :presence => true,
                     :uniqueness => true
+                    
+  def total_match_score
+    holes.map { |h| h.par }.reduce(&:+)
+  end
 end

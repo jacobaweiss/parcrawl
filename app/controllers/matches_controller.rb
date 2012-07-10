@@ -19,6 +19,6 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:id])
     @player = Player.new
     @players = @match.players.sort_by{ |player| player.match_score }
-    @taglines = ["When you win, your wallet loses.", "Argyle? Check. Advil? Check."]
+    @taglines = ["Always have a designated caddy.", "You'll wish life had mulligans after that round of karaoke.", "When you win, your wallet loses.", "Argyle? Check. Advil? Check."]
   end
 end

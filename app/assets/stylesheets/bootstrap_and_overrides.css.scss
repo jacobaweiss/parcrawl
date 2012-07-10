@@ -1,6 +1,29 @@
+$navbarBackground: #528199;
+$navbarBackgroundHighlight: #628699;
+$navbarBrandColor: #FFFFFF;
+$inputBackground: #F7F7F7;
+$btnPrimaryBackground: #528199;
+$baseFontFamily: 'Karla', sans-serif;
+$linkColor: #528199;
+
+@import url(http://fonts.googleapis.com/css?family=Karla);
 @import "bootstrap";
 @import "bootstrap-responsive";
 
 .body {
 	padding: 60px;
+}
+
+h1 {
+	color: #ED730E;
+}
+
+h2 {
+	color: #F08F41;
+}
+
+hr {
+	color: #3B3B3B;
+	background-color: #fcfcfc;
+	height: 1px;
 }

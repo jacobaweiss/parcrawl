@@ -1,9 +1,7 @@
 <div class="span8 offset2">
-	<div class="row">
-		<div class="hero-unit match-hero">
+	<div class="row match-head">
 			<h1><%= @match.name %></h1>
 			<p><%= @taglines.sample %></p>
-		</div>
 	</div>
 
 	<p>
@@ -32,7 +30,7 @@
 			<% end %>
 		<% end %>
 		<div class="row">
-			<div class="well span3 offset2 new-player-form">
+			<div class="span3 offset2 new-player-form">
 				<%= render "players/form" %>
 			</div>
 		</div>

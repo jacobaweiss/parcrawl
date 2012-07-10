@@ -6,12 +6,17 @@
 
 .main-title {
 	font-size: 92px;
-	line-height: 100px;
+	line-height: 80%;
 	text-align: center;
 }
 
-.match-hero {
-	padding: 20px;
+.match-head {
+	text-align: center;
+	h1 {
+		font-size: 60px;
+		margin-bottom: 20px;
+		line-height: 90%;
+	}
 }
 
 .score-title, .new-player-form, .current-matches, .holes-title {

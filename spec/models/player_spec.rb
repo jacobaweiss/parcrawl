@@ -11,7 +11,7 @@ describe Player do
     let!(:score) { Factory(:score, :player => player, :score => 2) }
     let!(:penalty) { Factory(:penalty, :player => player, :strokes => 1) }
     let!(:match) { Factory(:match) }
-    let!(:hole) { Factory(:hole, :par => 7, :match => match) }
+    let!(:hole) { Factory(:hole, :par => 7, :hole_number => 3, :match => match) }
     
     it "should display the correct match score" do
       player.match_score.should == 3

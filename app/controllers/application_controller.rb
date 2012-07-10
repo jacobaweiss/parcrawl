@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   protected
   
   def record_not_found
-    render :file => "public/404.html", :status => 404
+    render "public/404", :status => 404
   end
 end

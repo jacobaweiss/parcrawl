@@ -30,7 +30,7 @@
 			<% end %>
 		<% end %>
 		<div class="row">
-			<div class="span3 offset2 new-player-form">
+			<div class="new-player-form">
 				<%= render "players/form" %>
 			</div>
 		</div>
@@ -69,8 +69,12 @@
 		<% if @match.penalties %>
 			<% @match.penalties.each do |p| %>
 				<div class="row">
-					<h3><%= "-#{p.strokes} Strokes for #{p.player.username}" %></h3><br />
-					<p><%= p.offense %></p>
+					<h3 class="span8"><%= "-#{p.strokes} Strokes for #{p.player.username}" %></h3><br />
+				</div>
+				<div class="row">
+					<div class="span8">
+						<%= p.offense %>
+					</div>
 				</div>
 			<% end %>
 		<% end %>

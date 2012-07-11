@@ -1,12 +1,12 @@
 class Player < ActiveRecord::Base
   attr_accessible :username
   
-  has_many :match_players
   has_many :penalties
-  has_many :matches,    :through => :match_players
+  belongs_to :match
   has_many :scores
   
-  validates :username,  :presence => true
+  validates :username,  :presence => true,
+                        :uniqueness => { :scope => :match_id }
   
   def match_score
     scores.sum(:score) + penalties.sum(:strokes)

@@ -4,8 +4,8 @@ describe Player do
   let!(:player) { Factory(:player) }
   let!(:match) { Factory(:match, :players => [player]) }
   
-  it { should have_many(:matches).through(:match_players) }
   it { should validate_presence_of :username }
+  it { should belong_to(:match)}
   
   describe "score methods" do
     let!(:score) { Factory(:score, :player => player, :score => 2) }
@@ -22,6 +22,26 @@ describe Player do
     
     it "should correctly assert over or under par" do
       player.over_or_under_par?(match).should == 'under-par'
+    end
+  end
+  
+  describe "when joining a match" do
+    
+    context "if name is already taken within match" do
+      
+      it "should be invalid" do
+        invalid_player = Factory.build(:player, :match => match)
+        invalid_player.valid?.should == false
+      end
+    end
+    
+    context "if name exists in a different match" do
+      
+      it "should be valid" do
+        match_2 = Factory.build(:match)
+        invalid_player = Factory.build(:player, :match => match_2 )
+        invalid_player.valid?.should == true
+      end
     end
   end
   

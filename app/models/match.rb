@@ -5,8 +5,7 @@ class Match < ActiveRecord::Base
   attr_accessible :name
   
   has_many :holes
-  has_many :match_players
-  has_many :players,  :through => :match_players
+  has_many :players
   
   validates :name,  :presence => true,
                     :uniqueness => true

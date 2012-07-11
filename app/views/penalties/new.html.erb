@@ -12,7 +12,9 @@
 		
 		<div class="field">
 			<%= f.label :strokes, 'Strokes' %>
-			<%= f.text_field :strokes, :size => 2 %>
+			<div class="input-prepend">
+				<span class="add-on">-</span><%= f.text_field :strokes, :size => 2 %>
+			</div>
 		</div>
 		
 		<div class="action">

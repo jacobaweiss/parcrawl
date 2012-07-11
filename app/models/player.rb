@@ -6,8 +6,7 @@ class Player < ActiveRecord::Base
   has_many :matches,    :through => :match_players
   has_many :scores
   
-  validates :username,  :presence => true,
-                        :uniqueness => true
+  validates :username,  :presence => true
   
   def match_score
     scores.sum(:score) + penalties.sum(:strokes)

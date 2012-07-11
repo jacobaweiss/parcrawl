@@ -8,4 +8,5 @@ Parcrawl::Application.routes.draw do
   end
   
   root :to => 'matches#new'
+  match '/about' => 'pages#about'
 end

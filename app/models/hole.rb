@@ -5,6 +5,7 @@ class Hole < ActiveRecord::Base
   
   belongs_to :match
   has_many  :scores
+  
   validates :slug,  :presence => true
   validates :par,   :presence => true,
                     :format => { :with => /^[1-8]$/}

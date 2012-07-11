@@ -12,7 +12,10 @@
 			
 			<div class="nav-collapse">
 				<ul class="nav">
-
+					<% if cookies[:players_match] %>
+						<li><%= link_to 'Your Match', match_path(cookies[:players_match]) %></li>
+					<% end %>
+					<li><%= link_to 'About', '#' %></li>
 				</ul>
 			</div>
 			

@@ -4,6 +4,7 @@ class PlayersController < ApplicationController
   def create
     @player = @match.players.build(params[:player])
     if @match.save
+      cookies[:players_match] = @match.slug
       flash[:success] = "You have joined the match!"
       redirect_to @match
     else

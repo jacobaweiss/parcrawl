@@ -20,7 +20,7 @@ describe "Penalties Pages" do
       fill_in 'Strokes', :with => '3'
 
       click_button 'Add Penalty'
-
+      
       page.should have_content('Mentioned PHP')
     end
   end

@@ -8,5 +8,6 @@ Par Crawl is a scorecard application for the drinking game [pub golf](http://htt
 
 To-Do
 -----
+* Create understandable instructions (maybe a tour page?)
 *	Private/Public Games
 * Allow users to make a profile, and save their scores

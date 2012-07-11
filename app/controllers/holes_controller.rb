@@ -9,7 +9,7 @@ class HolesController < ApplicationController
     @hole = @match.holes.build(params[:hole])
     if @hole.save
       flash[:success] = "This hole has been added to your course!"
-      redirect_to match_hole_path(@match, @hole)
+      redirect_to @match
     else
       flash.now[:error] = "This hole could not be created at this time."
       render "new"

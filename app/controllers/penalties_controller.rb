@@ -9,7 +9,7 @@ class PenaltiesController < ApplicationController
     @penalty = Penalty.new(params[:penalty])
     if @penalty.save
       flash[:success] = "The shame of this player has been set in stone."
-      redirect_to match_player_path(@penalty.player.match, @penalty.player)
+      redirect_to @match
     else
       flash[:error] = "Something went wrong; please try again."
       redirect_to @match

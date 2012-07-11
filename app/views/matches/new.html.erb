@@ -36,15 +36,13 @@
 </div></p>
 
 <p>
-	<div class="span8 offset2">
-		<div class="row">
-			<h2 class="current-matches">Recent Matches</h2>
-			<hr />
-		</div>
-		<% @matches.each do |m| %>
-			<div class="row">
-				<h3 class="current-matches"><%= link_to m.name, match_path(m) %> (<%= m.players.count %> players)</h2>
-			</div>
-		<% end %>
+	<div class="row">
+		<h2 class="current-matches">Recent Matches</h2>
+		<hr />
 	</div>
+	<% @matches.each do |m| %>
+		<div class="row">
+			<h3 class="current-matches"><%= link_to m.name, match_path(m) %> (<%= m.players.count %> players)</h2>
+		</div>
+	<% end %>
 </p>

@@ -1,5 +1,6 @@
 class ScoresController < ApplicationController
   before_filter :load_hole
+  before_filter :only => [:create] {|controller| require_match_password(@hole.match)}
   
   def create
     @score = @hole.scores.build(params[:score])

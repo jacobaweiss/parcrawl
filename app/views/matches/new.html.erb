@@ -26,6 +26,11 @@
 				<%= f.label :name, "Match Name" %>
 				<%= f.text_field :name %>
 			</div>
+			
+			<div class="field">
+				<%= f.label :password, "Optional Password" %>
+				<%= f.password_field :password %>
+			</div>
 	
 			<div class="action">
 				<%= f.submit 'Tee Off', :class => "btn btn-primary" %>

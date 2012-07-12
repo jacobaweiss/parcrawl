@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="password-form">
+		<%= form_tag match_sessions_path do %>
+			<div class="field">
+				<%= label_tag :password %>
+				<%= password_field_tag :password %>
+			</div>
+			
+			<div class="action">
+				<%= submit_tag "Log in", :class => "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+</div>

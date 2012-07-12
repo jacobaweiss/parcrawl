@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711132356) do
+ActiveRecord::Schema.define(:version => 20120712183535) do
 
   create_table "holes", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120711132356) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "slug"
+    t.string   "password"
   end
 
   add_index "matches", ["slug"], :name => "index_matches_on_slug"

@@ -1,4 +1,5 @@
 class MatchesController < ApplicationController
+  
   def new
     @match = Match.new
     @matches = Match.order("created_at DESC")
@@ -7,6 +8,10 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(params[:match])
     if @match.save
+      if @match.password?
+        session[:match] = @match
+      end
+      
       flash[:success] = "Your custom match url is #{root_url}#{"matches/"+@match.slug}"
       redirect_to @match
     else
@@ -21,4 +26,5 @@ class MatchesController < ApplicationController
     @players = @match.players.sort_by{ |player| player.match_score }
     @taglines = ["Always have a designated caddy.", "You'll wish life had mulligans after that round of karaoke.", "When you win, your wallet loses.", "Argyle? Check. Advil? Check."]
   end
+  
 end

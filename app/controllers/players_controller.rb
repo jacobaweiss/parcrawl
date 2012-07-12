@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_filter :load_match
+  before_filter :only => [:create] {|controller| require_match_password(@match)}
 
   def create
     @player = @match.players.build(params[:player])

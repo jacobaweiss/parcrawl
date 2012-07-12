@@ -2,7 +2,7 @@ class Match < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   
-  attr_accessible :name
+  attr_accessible :name, :password
   
   has_many :holes
   has_many :players

@@ -1,5 +1,6 @@
 class PenaltiesController < ApplicationController
   before_filter :load_match, :only => [:new, :create]
+  before_filter :only => [:new, :create] {|controller| require_match_password(@match)}
   
   def new
     @penalty = Penalty.new

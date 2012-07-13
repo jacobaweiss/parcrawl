@@ -59,7 +59,6 @@ describe "Matches" do
       it "can join the match" do
         fill_in 'Username', :with => 'Franklin'
         click_button('Join the Match')
-        binding.pry
         page.should have_content('Franklin')
       end
     end

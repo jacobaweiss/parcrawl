@@ -16,15 +16,19 @@ class ApplicationController < ActionController::Base
   
   def require_match_password(match)
     if match.password
-      unless logged_in?(match)
+      unless logged_in?(match)  
         flash[:notice] = "Please sign in with the match password to access this"
-        redirect_to new_match_session_path(match)
+        if params[:player]
+          redirect_to new_match_session_path(match, :player => {:username => params[:player][:username]})
+        else
+          redirect_to new_match_session_path(match)
+        end
       end
     end
   end
   
   def logged_in?(match)
-    session[:match] && session[:match] == match
+    session[:match] && session[:match] == match.name
   end
   
 end

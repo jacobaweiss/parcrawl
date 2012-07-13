@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-  attr_accessible :username
+  attr_accessible :username, :match_id
   
   has_many :penalties
   belongs_to :match

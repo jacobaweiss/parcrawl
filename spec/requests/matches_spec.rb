@@ -47,7 +47,7 @@ describe "Matches" do
     
     context "when the match is password protected and user logs in" do
       before do
-        visit "/matches/#{match2.slug}/sessions/new"
+        visit "/matches/#{match2.slug}/login"
         fill_in 'Password', :with => 'wonder'
         click_button('Log in')
       end

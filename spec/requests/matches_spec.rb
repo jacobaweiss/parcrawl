@@ -15,14 +15,41 @@ describe "Matches" do
   end
 
   describe "when creating a match" do
-    before do
-      visit root_path
-      fill_in 'Name', :with => "Bar Excellence"
-      click_button 'Tee Off'
+    
+    context "without a password" do
+      before do
+        visit root_path
+        fill_in 'Name', :with => "Bar Excellence"
+        click_button('Tee Off')
+      end
+
+      it "should redirect to the match page" do
+        page.should have_content('Bar Excellence')
+      end
     end
-  
-    it "should redirect to the match page" do
-      page.should have_content('Bar Excellence')
+    
+    context "with a password" do
+      before do
+        visit root_path
+        fill_in 'Name', :with => "Bar Excellence"
+        fill_in 'Optional Password', :with => 'drinks'
+        click_button('Tee Off')
+      end
+
+      it "should redirect to the match page" do
+        visit "/matches/bar-excellence/holes/new"
+        page.should have_content('Add a new bar to this course')
+      end
+    end
+    
+    context "with invalid information" do
+      it "should return an error" do
+        visit root_path
+        fill_in 'Name', :with => ""
+        fill_in 'Optional Password', :with => "drinks"
+        click_button('Tee Off')
+        page.should have_content('Your match could not be created at this time.')
+      end
     end
   end
   

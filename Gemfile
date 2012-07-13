@@ -18,6 +18,7 @@ group :development, :test do
   gem 'shoulda-matchers',   '~> 1.1.0'
   gem 'factory_girl_rails', '~> 1.7.0'
   gem 'pry',                '~> 0.9.8.4'
+  gem 'simplecov',          '~> 0.6.4'
 end
 
 group :test do

@@ -8,9 +8,9 @@ describe Player do
   it { should belong_to(:match)}
   
   describe "score methods" do
-    let!(:score) { Factory(:score, :player => player, :score => 2) }
     let!(:penalty) { Factory(:penalty, :player => player, :strokes => 1) }
     let!(:hole) { Factory(:hole, :par => 7, :hole_number => 3, :match => match) }
+    let!(:score) { Factory(:score, :player => player, :score => 2, :hole => hole) }
     
     it "should display the correct match score" do
       player.match_score.should == 3

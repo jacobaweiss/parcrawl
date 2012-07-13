@@ -7,6 +7,7 @@ module MatchAuth
     
     private
     
+    #for match-required things
     def load_match
       @match = Match.find(params[:match_id])
     end
@@ -31,6 +32,24 @@ module MatchAuth
         redirect_to match_login_path(@match)
       end
     end
+    
+    #for match
+    def correct_password?
+      params[:password] == @match.password
+    end
+
+    def save_match_and_player
+      cookies[:logged_into_match] = @match.slug
+      create_player_if_requested
+    end
+
+    def create_player_if_requested
+      if params[:player]
+        player = @match.players.build(:username => params[:player], :match_id => params[:match_id])
+        player.save
+      end
+    end
+    
   end
   
 end

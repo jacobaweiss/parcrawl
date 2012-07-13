@@ -1,15 +1,18 @@
 class MatchesController < ApplicationController
+  include MatchAuth
+  skip_before_filter :load_match
+  skip_before_filter :check_for_auth
   
   def new
     @match = Match.new
-    @matches = Match.order("created_at DESC")
+    @matches = Match.order("created_at DESC").limit(10)
   end
   
   def create
     @match = Match.new(params[:match])
     if @match.save
       if @match.password?
-        session[:match] = @match
+        cookies[:logged_into_match] = @match.slug
       end
       
       flash[:success] = "Your custom match url is #{root_url}#{"matches/"+@match.slug}"
@@ -32,13 +35,8 @@ class MatchesController < ApplicationController
   
   def authorize
     @match = Match.find(params[:match_id])
-    if params[:password] == @match.password
-      cookies[:logged_into_match] = @match.slug
-      if params[:player]
-        player = @match.players.build(:username => params[:player], :match_id => params[:match_id])
-        player.save
-      end
-      
+    if correct_password?
+      save_match_and_player
       flash[:success] = "You now have access to this match!"
       redirect_to @match
     else

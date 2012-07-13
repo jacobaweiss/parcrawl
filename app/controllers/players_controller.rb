@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
-  before_filter :load_match
-  before_filter :only => [:create] {|controller| require_match_password(@match)}
+  include MatchAuth
+  skip_before_filter :check_for_auth, :only => [:show]
 
   def create
     @player = @match.players.build(params[:player])
@@ -17,12 +17,6 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @penalties = @player.penalties.order("created_at DESC")
-  end
-  
-  private
-  
-  def load_match
-    @match = Match.find(params[:match_id])
   end
   
 end

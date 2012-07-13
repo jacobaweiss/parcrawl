@@ -27,4 +27,24 @@ class MatchesController < ApplicationController
     @taglines = ["Always have a designated caddy.", "You'll wish life had mulligans after that round of karaoke.", "When you win, your wallet loses.", "Argyle? Check. Advil? Check."]
   end
   
+  def login
+  end
+  
+  def authorize
+    @match = Match.find(params[:match_id])
+    if params[:password] == @match.password
+      cookies[:logged_into_match] = @match.slug
+      if params[:player]
+        player = @match.players.build(:username => params[:player], :match_id => params[:match_id])
+        player.save
+      end
+      
+      flash[:success] = "You now have access to this match!"
+      redirect_to @match
+    else
+      flash[:error] = "The password you entered was incorrect."
+      redirect_to @match
+    end
+  end
+  
 end

@@ -1,6 +1,6 @@
 class HolesController < ApplicationController
-  before_filter :load_match, :only => [:new, :create]
-  before_filter :only => [:new, :create] {|controller| require_match_password(@match)}
+  include MatchAuth
+  skip_before_filter :check_for_auth, :only => [:show]
   
   def new
     @hole = Hole.new
@@ -20,12 +20,6 @@ class HolesController < ApplicationController
   def show
     @hole = Hole.find(params[:id])
     @score = Score.new
-  end
-  
-  private
-  
-  def load_match
-    @match = Match.find(params[:match_id])
   end
   
 end

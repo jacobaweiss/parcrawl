@@ -1,9 +1,10 @@
 Parcrawl::Application.routes.draw do
   resources :matches, :only => [:show, :new, :create] do
+    match '/login' => 'matches#login', :via => :get
+    match '/' => 'matches#authorize', :via => :post
     resources :players, :only => [:show, :create]
     resources :holes, :only => [:show, :new, :create]
     resources :penalties, :only => [:new, :create]
-    resources :sessions, :only => [:new, :create]
   end
   
   resources :holes, :only => [:show, :new, :create] do

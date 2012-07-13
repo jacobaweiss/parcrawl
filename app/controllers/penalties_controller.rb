@@ -1,6 +1,5 @@
 class PenaltiesController < ApplicationController
-  before_filter :load_match, :only => [:new, :create]
-  before_filter :only => [:new, :create] {|controller| require_match_password(@match)}
+  include MatchAuth
   
   def new
     @penalty = Penalty.new
@@ -16,10 +15,5 @@ class PenaltiesController < ApplicationController
       redirect_to @match
     end
   end
-  
-  private
-  
-  def load_match
-    @match = Match.find(params[:match_id])
-  end
+
 end

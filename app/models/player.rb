@@ -12,14 +12,14 @@ class Player < ActiveRecord::Base
     scores.sum(:score) + penalties.sum(:strokes)
   end
   
-  def match_score_relative_to_par(match)
-    match_score - match.match_par
+  def match_score_relative_to_par
+    match_score - match_par_for_holes_played
   end
   
   def over_or_under_par?(match)
-    if match_score_relative_to_par(match) > 0
+    if match_score_relative_to_par > 0
       'over-par'
-    elsif match_score_relative_to_par(match) < 0
+    elsif match_score_relative_to_par < 0
       'under-par'
     end
   end
@@ -30,6 +30,18 @@ class Player < ActiveRecord::Base
     else
       'N/A'
     end
+  end
+  
+  def match_par_for_holes_played
+    scores.map {|s| s.hole.par }.reduce(0, &:+)
+  end
+  
+  def last_hole_played
+    scores.empty? ? "N/A" : scores.last.hole.name
+  end
+  
+  def most_recent_penalty
+    penalties.empty? ? "None (someone's taking it too easy)" : penalties.last.offense
   end
   
 end

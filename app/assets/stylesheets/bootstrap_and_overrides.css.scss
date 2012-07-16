@@ -1,12 +1,15 @@
-$navbarBackground: #528199;
-$navbarBackgroundHighlight: #628699;
+$navbarBackground: #3282ED;
+$navbarBackgroundHighlight: #4B93F2;
 $navbarBrandColor: #FFFFFF;
 $navbarLinkColor: #FFFFFF;
-$navbarLinkColorHover: #F08F41;
+$navbarLinkColorHover: #7DF097;
 $inputBackground: #F7F7F7;
-$btnPrimaryBackground: #528199;
+$btnPrimaryBackground: #3282ED;
 $baseFontFamily: 'Karla', sans-serif;
-$linkColor: #528199;
+$linkColor: #3282ED;
+body {
+	background-color: #F7F7F7;
+}
 
 @import url(http://fonts.googleapis.com/css?family=Karla);
 @import "bootstrap";
@@ -14,14 +17,6 @@ $linkColor: #528199;
 
 .body {
 	padding-top: 60px;
-}
-
-h1 {
-	color: #ED730E;
-}
-
-h2 {
-	color: #F08F41;
 }
 
 hr {

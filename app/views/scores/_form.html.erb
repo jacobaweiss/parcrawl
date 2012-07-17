@@ -1,18 +1,20 @@
-<%= form_for [@hole, @score] do |f| %>
-	
-	<div class="row">
-		<div class="span3">
-			<%= f.label :player_id, 'Player' %>
-			<%= f.select(:player_id, options_for_select( @hole.match.players.map {|n| [n.username,n.id]} )) %>
-		</div>
-		<div class="span3">
-			<%= f.label :score, 'Strokes' %>
-			<%= f.text_field :score, :size => 2 %>
-		</div>
-		<div class="span2">
-			<br />
-			<%= f.submit 'Add to Score', :class => 'btn btn-primary' %>
-		</div>
+<%= form_for [@match, @score] do |f| %>
+	<div class="field">
+		<%= f.label :player_id, 'Player' %>
+		<%= f.select(:player_id, options_for_select( @match.players.map {|n| [n.username,n.id]} )) %>
 	</div>
 	
+	<div class="field">
+		<%= f.label :hole_id, 'Hole' %>
+		<%= f.select(:hole_id, options_for_select( @match.holes.map {|n| [n.name,n.id]} )) %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :score, 'Strokes' %>
+		<%= f.text_field :score, :size => 2 %>
+	</div>
+	
+	<div class="action">
+		<%= f.submit 'Add to Score', :class => 'btn btn-primary' %>
+	</div>
 <% end %>

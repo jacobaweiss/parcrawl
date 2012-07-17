@@ -5,6 +5,7 @@ Parcrawl::Application.routes.draw do
     resources :players, :only => [:show, :create]
     resources :holes, :only => [:show, :create]
     resources :penalties, :only => [:create]
+    resources :scores, :only => [:create]
   end
   
   resources :holes, :only => [:show, :create] do

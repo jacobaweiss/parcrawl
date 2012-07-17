@@ -12,4 +12,8 @@ $(document).ready(function(){
     $(".new-hole-form").slideToggle("fast");
   });
   
+  $(".new-score").click(function() {
+    $(".new-score-form").slideToggle("fast");
+  });
+  
 });

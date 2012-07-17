@@ -28,6 +28,7 @@ class MatchesController < ApplicationController
     @penalty = Penalty.new
     @player = Player.new
     @hole = Hole.new
+    @score = Score.new
     @players = @match.players.sort_by{ |player| player.match_score_relative_to_par }
     @taglines = ["Always have a designated caddy.", "You'll wish life had mulligans after that round of karaoke.", "When you win, your wallet loses.", "Argyle? Check. Advil? Check."]
   end

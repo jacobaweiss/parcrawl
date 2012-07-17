@@ -16,4 +16,9 @@ class Hole < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => { :scope => :match_id }
   
   friendly_id :name, use: :slugged
+  
+  def last_played_by
+    scores.any? ? scores.last.player.username : "None"
+  end
+  
 end

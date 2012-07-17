@@ -16,18 +16,16 @@ describe "Scores" do
         end
       
         it "should add the score" do
-          visit "/matches/#{match.slug}/holes/#{hole.slug}"
           select "#{player.username}", :from => "Player"
           fill_in 'Strokes', :with => 3
           click_button('Add to Score')
-          visit "/matches/#{match.slug}/holes/#{hole.slug}"
-          page.should_not have_content("N/A")
+          page.should have_content("Last hole played: #{hole.name}")
         end
       end
     
       context "when not logged in" do
         it "should not add the score" do
-          visit "/matches/#{match.slug}/holes/#{hole.slug}"
+          visit "/matches/#{match.slug}"
           select "#{player.username}", :from => "Player"
           fill_in 'Strokes', :with => 3
           click_button('Add to Score')
@@ -44,7 +42,6 @@ describe "Scores" do
       end
       
       it "should return an error flash" do
-        visit "/matches/#{match.slug}/holes/#{hole.slug}"
         select "#{player.username}", :from => "Player"
         fill_in 'Strokes', :with => ''
         click_button('Add to Score')

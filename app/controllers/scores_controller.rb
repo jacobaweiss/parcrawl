@@ -8,7 +8,7 @@ class ScoresController < ApplicationController
       redirect_to @match, :only_path => true
     else
       flash[:error] = "Your score couldn't be saved; either try again, or stop drinking and go home you drunkard."
-      redirect_to match_hole_path(@match, @hole), :only_path => true
+      redirect_to @match, :only_path => true
     end
   end
 end

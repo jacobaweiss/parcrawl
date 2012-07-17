@@ -14,12 +14,12 @@ describe "Penalties Pages" do
     
     describe "when adding a penalty" do
       before do
-        select "#{player.username}", :from => 'Player'
+        select "#{player.username}", :from => 'penalty_player_id'
       end
     
       it "should allow a player to add a penalty" do
         fill_in 'Offense', :with => 'Mentioned PHP'
-        fill_in 'Strokes', :with => '3'
+        fill_in 'penalty_strokes', :with => '3'
 
         click_button 'Add Penalty'
       
@@ -28,11 +28,11 @@ describe "Penalties Pages" do
     
       it "should redirect to match page when penalty is invalid" do
         fill_in 'Offense', :with => 'Broke the app'
-        fill_in 'Strokes', :with => "her?"
+        fill_in 'penalty_strokes', :with => "her?"
         
         click_button 'Add Penalty'
         
-        page.should have_content("Something went wrong; please try again.")
+        page.should have_content("Something went wrong when trying to add this penalty; please try again.")
       end
     end
   end

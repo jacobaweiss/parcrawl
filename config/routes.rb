@@ -8,10 +8,6 @@ Parcrawl::Application.routes.draw do
     resources :scores, :only => [:create]
   end
   
-  resources :holes, :only => [:show, :create] do
-    resources :scores, :only => [:create]
-  end
-  
   root :to => 'matches#new'
   match '/about' => 'pages#about'
   match "*path"  => 'application#routing_error'

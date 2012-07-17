@@ -8,8 +8,8 @@ class HolesController < ApplicationController
       flash[:success] = "This hole has been added to your course!"
       redirect_to @match
     else
-      flash.now[:error] = "This hole could not be created at this time."
-      render "new"
+      flash[:error] = "This hole could not be created at this time."
+      redirect_to @match
     end
   end
   

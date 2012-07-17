@@ -1,10 +1,6 @@
 class PenaltiesController < ApplicationController
   include MatchAuth
   
-  def new
-    @penalty = Penalty.new
-  end
-  
   def create
     @penalty = Penalty.new(params[:penalty])
     if @penalty.save

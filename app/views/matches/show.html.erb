@@ -17,6 +17,12 @@
 			</div>
 		</div>
 
+		<button class="btn btn-mini new-player" type="submit">New Player</button>
+		<div class="row new-player-form">
+				<%= render "players/form" %>
+		</div>
+		<br /><br />
+		
 		<% if @players %>
 			<% @players.each_with_index do |p, i| %>
 				<div class="row">
@@ -41,13 +47,6 @@
 				</div>
 			<% end %>
 		<% end %>
-		<br />
-		
-		<button class="btn btn-mini new-player" type="submit">New Player</button>
-		<div class="row new-player-form">
-				<%= render "players/form" %>
-		</div>
-		
 		<hr class="leader-line"/>
 	</div>
 	
@@ -58,7 +57,13 @@
 					<h2>Course Holes</h2>
 				</div>
 			</div>
-			<%= link_to 'Add a hole', new_match_hole_path(@match) %>
+			
+			<button class="btn btn-mini new-hole" type="submit">New Hole</button>
+			<div class="row new-hole-form">
+					<%= render "holes/form" %>
+			</div>
+			<br /><br />
+			
 			<% @match.holes.order("hole_number ASC").each do |h| %>
 				<div class="row">
 					<div class="span4">
@@ -83,12 +88,19 @@
 					<h2>Penalties</h2>
 				</div>
 			</div>
-			<%= link_to 'Add a Penalty', new_match_penalty_path(@match) %>
+			
+			<button class="btn btn-mini new-penalty" type="submit">New Penalty</button>
+			<div class="row new-penalty-form">
+					<%= render "penalties/form" %>
+			</div>
+			<br /><br />
+			
+			
 			<% if @match.penalties %>
 				<% @match.penalties.each do |p| %>
 					<div class="row">
-						<h3 class="span8"><%= "-#{p.strokes} Strokes for #{p.player.username}" %></h3>
-						<div class="span8">
+						<h3 class="span4"><%= "-#{p.strokes} Strokes for #{p.player.username}" %></h3>
+						<div class="span4">
 							<%= p.offense %>
 						</div>
 					</div>

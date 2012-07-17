@@ -9,10 +9,6 @@ class Match < ActiveRecord::Base
   
   validates :name,  :presence => true,
                     :uniqueness => true
-                    
-  def match_par
-    holes.sum(:par)
-  end
   
   def penalties
     if players.any?

@@ -2,10 +2,6 @@ class HolesController < ApplicationController
   include MatchAuth
   skip_before_filter :check_for_auth, :only => [:show]
   
-  def new
-    @hole = Hole.new
-  end
-  
   def create
     @hole = @match.holes.build(params[:hole])
     if @hole.save

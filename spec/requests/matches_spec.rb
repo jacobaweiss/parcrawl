@@ -32,13 +32,12 @@ describe "Matches" do
       before do
         visit root_path
         fill_in 'Name', :with => "Bar Excellence"
-        fill_in 'Optional Password', :with => 'drinks'
+        fill_in 'Optional Password', :with => "foo"
         click_button('Tee Off')
       end
 
       it "should redirect to the match page" do
-        visit "/matches/bar-excellence/holes/new"
-        page.should have_content('Add a new bar to this course')
+        page.should have_link('Your Match')
       end
     end
     

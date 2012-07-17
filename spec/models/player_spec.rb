@@ -17,7 +17,7 @@ describe Player do
     end
     
     it "should display correct match score relative to match par" do
-      player.match_score_relative_to_par(match).should == -4
+      player.match_score_relative_to_par.should == -4
     end
     
     it "should correctly assert over or under par" do

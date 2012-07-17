@@ -14,7 +14,6 @@ describe "Penalties Pages" do
     
     describe "when adding a penalty" do
       before do
-        click_link('Add a Penalty')
         select "#{player.username}", :from => 'Player'
       end
     

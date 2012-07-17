@@ -9,14 +9,27 @@
 </head>
 <body>
 	<%= render :partial => "layouts/navbar" %>
-		<div class="container body">
+	<div class="container body">
+		<div class="hidden-phone">
 			<% flash.each do |key, value| %>
 		  	<div class="alert alert-<%= key %>">
 					<%= value %>
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 				</div>
-		  <% end %>
-			<%= yield %>
+		  <% end %>	
 		</div>
+
+		<div class="visible-phone phone-flashes">
+			<% flash.each do |key, value| %>
+		  	<div class="alert alert-<%= key %>">
+					<%= value %>
+					<a class="close" data-dismiss="alert" href="#">&times;</a>
+				</div>
+		  <% end %>	
+		</div>
+
+
+		<%= yield %>
+	</div>
 </body>
 </html>

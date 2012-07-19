@@ -55,12 +55,6 @@ describe "Matches" do
   describe "Viewing a match show page" do
     let!(:match2) { Factory(:match, :name => "magic", :slug => "magic", :password => "wonder") }
     
-    it "links to holes" do
-      hole = Factory(:hole, :match => match, :hole_number => 2, :name => 'Grady Pub')
-      visit "/matches/#{match.slug}"
-      page.should have_link('Grady Pub', :href => "/matches/#{match.slug}/holes/#{hole.slug}")
-    end
-    
     context "when the requested match does not exist" do
       it "should return a 404 error" do
         

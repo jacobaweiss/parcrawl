@@ -3,11 +3,8 @@
 		<%= f.label :player_id, 'Player' %>
 		<%= f.select(:player_id, options_for_select( @match.players.map {|n| [n.username,n.id]} )) %>
 	</div>
-	
-	<div class="field">
-		<%= f.label :hole_id, 'Hole' %>
-		<%= f.select(:hole_id, options_for_select( @match.holes.map {|n| [n.name,n.id]} )) %>
-	</div>
+
+	<%= f.hidden_field :hole_id, :value => hole.id %>
 	
 	<div class="field">
 		<%= f.label :score, 'Strokes' %>

@@ -6,6 +6,7 @@ class Match < ActiveRecord::Base
   
   has_many :holes
   has_many :players
+  has_many :scores, :through => :holes
   
   validates :name,  :presence => true,
                     :uniqueness => true
@@ -14,6 +15,10 @@ class Match < ActiveRecord::Base
     if players.any?
       players.map{|p| p.penalties}.reduce(&:+).sort_by{ |p| p.created_at }.reverse
     end
+  end
+  
+  def has_any_scores?
+    scores.sum(:score) > 0
   end
   
 end

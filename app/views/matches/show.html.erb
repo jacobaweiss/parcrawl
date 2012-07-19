@@ -16,13 +16,17 @@
 				<h2>Leaderboard</h2>
 			</div>
 		</div>
-
-		<button class="btn btn-mini new-player" type="submit">New Player</button><button class="btn btn-mini new-score pull-right">Mark Score</button>
+		
+		<% if @players.empty? %>
+			<div class="row">
+				<div class="match-directions well span2">1. Add some players</div>
+			</div>
+		<% end %>
+		
+		<button class="btn btn-mini new-player" type="submit">New Player</button>
+		
 		<div class="row new-player-form">
 				<%= render "players/form" %>
-		</div>
-		<div class="row new-score-form">
-				<%= render "scores/form" %>
 		</div>
 		<br /><br />
 		
@@ -61,6 +65,16 @@
 				</div>
 			</div>
 			
+			<% if @match.holes.empty? %>
+				<div class="row">
+					<div class="match-directions well span3">2. Add some bars to serve as hole locations</div>
+				</div>
+			<% elsif !@match.has_any_scores? %>
+				<div class="row">
+					<div class="match-directions well span3">3. Mark your scores as you play</div>
+				</div>
+			<% end %>
+			
 			<button class="btn btn-mini new-hole" type="submit">New Hole</button>
 			<div class="row new-hole-form">
 					<%= render "holes/form" %>
@@ -70,7 +84,10 @@
 			<% @match.holes.order("hole_number ASC").each do |h| %>
 				<div class="row">
 					<div class="span4">
-							<h3><%= h.hole_number %>. <%= link_to h.name, [@match, h] %></h3>
+						<h3 class="score"><%= h.hole_number %>. <%= h.name %> </h3><span class="score new-score">Mark a Score ></span>
+						<div class="row new-score-form">
+							<%= render "scores/form", :hole => h %>
+						</div>
 					</div>		
 				</div>
 				<div class="row">
@@ -91,6 +108,12 @@
 					<h2>Penalties</h2>
 				</div>
 			</div>
+			
+			<% if !@match.has_any_scores? && @match.holes.any? %>
+				<div class="row">
+					<div class="match-directions well span3">3. Add penalties to shame your friends</div>
+				</div>
+			<% end %>
 			
 			<button class="btn btn-mini new-penalty" type="submit">New Penalty</button>
 			<div class="row new-penalty-form">
